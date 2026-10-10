@@ -1,0 +1,3 @@
+# Compatibility installer. Dependency versions are defined in ../../pyproject.toml.
+# tkinter and sqlite3 are part of Python and must not be installed with pip.
+-e ../..[xueqiu,gui]

@@ -1,0 +1,30 @@
+"""
+数据提供者模块
+
+包含各种数据源的实现：
+- TdxDataProvider: 通达信数据接口
+- ThsDataProvider: 同花顺数据接口  
+- EastmoneyDataProvider: 东方财富数据接口
+"""
+
+from .base_provider import BaseDataProvider
+from .tdx_provider import TdxDataProvider
+from .ths_provider import ThsDataProvider
+from .eastmoney_provider import EastmoneyDataProvider
+try:
+    from .ftshare_provider import FTShareDataProvider
+except ImportError:
+    FTShareDataProvider = None
+try:
+    from .big_qmt_bridge_provider import BigQmtBridgeDataProvider
+except ImportError:
+    BigQmtBridgeDataProvider = None
+
+__all__ = [
+    'BaseDataProvider',
+    'TdxDataProvider', 
+    'ThsDataProvider',
+    'EastmoneyDataProvider',
+    'BigQmtBridgeDataProvider',
+    'FTShareDataProvider'
+]

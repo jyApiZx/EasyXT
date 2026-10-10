@@ -1,0 +1,505 @@
+﻿﻿# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.env.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# 项目特定文件
+# 数据文件
+data/
+qlib_data/
+easyxt_backtest/ml/models/
+logs/
+# 根目录临时导出仍忽略；子目录CSV由各自目录规则控制，允许提交fixture/清单。
+/*.csv
+*.xlsx
+*.xls
+
+# 配置文件（包含敏感信息）
+config/user_config.py
+config/account_config.py
+**/userdata_mini/
+**/userdata/
+
+# 交易相关敏感文件
+**/trade_log_*.csv
+**/real_trade_log_*.csv
+account_*.json
+position_*.json
+
+# 通达信自选股文件（自动生成，不应提交）
+my_favorites.txt
+*_favorites.txt
+selected_stocks.txt
+
+# 通达信插件（使用通达信安装目录的插件，本地不放代码）
+PYPlugins/user/
+# 但保留本地数据目录
+!PYPlugins/data/
+!PYPlugins/file/
+!PYPlugins/py_strategy.cfg
+!PYPlugins/.gitignore
+
+# 临时文件
+temp/
+tmp/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# IDE文件
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# xtquant相关（需要单独下载，不纳入版本控制）
+xtquant/
+
+# 开发和调试文件
+
+# Tushare基础数据下载模块（重要，GUI依赖）
+!tushare_manager/download_basic_data.py
+
+*debug*.py
+*fix*.py
+create_*.py
+migrate_*.py
+release_*.py
+import_*.py
+download_*.py
+batch_*.py
+quick_*.py
+simple_*.py
+*_backup*.py
+*_enhanced*.py
+测试*.py
+调试*.py
+修复*.py
+诊断*.py
+验证*.py
+检查*.py
+快速*.py
+数据*.py
+改进的*.py
+获取*.py
+环境*.py
+第*课*.py
+最终*.py
+启动*.py
+启动*.bat
+claude-start*.bat
+mock_*.py
+# QMT相关文件 - 只忽略测试文件，保留核心代码
+test_qmt*.py
+qmt_test*.py
+*_test_qmt*.py
+example*.py
+comprehensive_*.py
+
+# 正式单元测试必须可追踪；保留上述规则对散落的临时脚本生效
+!unit_tests/
+!unit_tests/**/
+!unit_tests/**/*.py
+
+# ==================== 例外规则：保留重要文件 ====================
+# Alpha分析平台的核心文件
+!easy_xt/alpha_analysis/test_alpha_analysis.py
+!easy_xt/alpha_analysis/example_usage.py
+
+# JQ2QMT策略的核心文件
+!strategies/jq2qmt/qmt_signal_client.py
+!strategies/jq2qmt/qmt_client_mini.py
+
+# 回测框架核心文件
+!easyxt_backtest/simple_strategy_adapter.py
+
+# QMT相关核心文件（不忽略！）
+!core/data_manager/sources/qmt_source.py
+!easy_xt/qmt_paths.py
+!strategies/conditional_orders/qmt_advanced_stop_loss.py
+
+# tools目录下的重要工具和测试脚本
+!tools/测试订阅接口.py
+!tools/诊断tick字段.py
+!tools/检查qstock状态.py
+!tools/check_env.py
+!tools/test_data_sources.py
+
+# 文档和总结文件
+*总结.md
+*完成*.md
+*规范*.md
+*报告.md
+*计划.md
+*指南.md
+easy_xt项目API函数说明文档_第*.md
+EasyXT*.md
+QMT*.md
+qstock*.md
+功能调用对照表.md
+股票量化交易学习案例系统.md
+数据获取问题*.md
+修复说明.md
+
+# 临时和重复文件
+*.dmp
+获取历史行情测试/
+正确的*.py
+
+# Jupyter Notebook检查点
+.ipynb_checkpoints/
+
+# CodeBuddy相关
+.codebuddy/
+# config structure cleanup (mixed: core + easy_xt + strategy)
+local/*.json
+*.secrets.json
+
+# config cleanup (strategy overrides only)
+strategies/xueqiu_follow/config/backup/
+strategies/xueqiu_follow/config/settings.json
+strategies/xueqiu_follow/config/realtime_config.json
+**/config/realtime_config.json
+strategies/xueqiu_follow/config/default.json
+strategies/xueqiu_follow/config/jq2qmt_config.json
+
+
+# 服务器配置文件（包含敏感信息）
+easy_xt/realtime_data/config/server_config.py
+# 服务器配置文件备份
+easy_xt/realtime_data/config/server_config.json
+
+!gui_app/widgets/backtest_widget.py
+
+# ==================== 例外规则：重要的启动脚本 ====================
+# 数据管理工具（重要）
+!diagnose_grid_trades.py
+# Streamlit页面（重要，包含backtest关键词）
+!101因子/101因子分析平台/src/workflow/grid_backtest_page.py
+!101因子/101因子分析平台/src/workflow/*backtest*.py
+
+# 临时目录和文件
+examples/
+backup/
+integration_test_logs/
+reports/
+.worktrees/
+demo*/
+
+# Demo图表文件
+demo_*.png
+demo_*.jpg
+demo_*.jpeg
+deploy/
+demo_config_new/
+PLAN.md
+
+# 历史存档目录
+101因子/101因子分析平台/archive/
+**/archive/
+archive/
+
+# 项目根目录的存档目录
+.archive/
+
+# 101因子平台的开发文档（项目根docs已有完整版本）
+101因子/101因子分析平台/docs/
+
+# 101因子平台的本地配置文件（不提交）
+101因子/101因子分析平台/config/data_config.yaml
+101因子/101因子分析平台/config/duckdb_config.yaml
+
+# 发布和备份目录（本地构建产物，不提交）
+app/
+cb_etf_release/
+*_release/
+
+# 根目录下的特定目录
+scripts/
+markdown/
+QMT-MCP/
+
+# 忽略code_converter目录中的API文档文件
+code_converter/*.pdf
+code_converter/*.html
+code_converter/*.docx
+code_converter/api_docs/*.pdf
+code_converter/api_docs/*.html
+code_converter/api_docs/*.docx
+
+# 忽略Ptrade API PDF文档目录
+code_converter/api_docs/ptrade api/
+
+# 忽略bilibili_videos目录中的视频相关文件
+bilibili_videos/
+bilibili_videos/*.html
+bilibili_videos/*.md
+bilibili_videos/*.mp4
+bilibili_videos/*.avi
+bilibili_videos/*.mov
+
+# 忽略skills工具目录（个人使用的内容生成工具）
+skills/
+101因子/101因子分析平台/workflows/test.json
+101因子/101因子分析平台/workflows/TEST2.json
+.claude/settings.local.json
+code_converter/转换后的ptrade代码.py
+code_converter/full_converted_strategy.py
+gui_app/widgets/GUI使用说明.md
+nul
+FACTOR_ENHANCEMENT_PLAN.md
+data_manager/unified_data_interface.py.backup
+strategies/小市值基础策略V1_QMT版.py
+strategies/小市值基础策略V1.py
+strategies/小市值基础策略V2_QMT版.py
+strategies/小市值基础策略V2.py
+tools/diagnose_front_adjust_null.py
+tools/restore_widget_from_github.py
+easyxt_backtest/PROJECT_SUMMARY.md
+easyxt_backtest/output/
+gui_app/widgets/README_TUSHARE.md
+strategies/小市值基础策略V2_EasyXT版.py
+strategies/小市值基础策略V2_EasyXT实盘专用版.py
+strategies/converted_strategy.qmt.py
+# 知识星球专属策略（不提交到 GitHub）
+strategies/quant_strategies/
+未来的选题思路.md
+
+# 数据验证和分析脚本（临时文件，不提交）
+diagnose_*.py
+docs/market_cap_data_analysis.md
+docs/*数据*.md
+easyxt_backtest/README_V2.md
+easyxt_backtest/README_V3.md
+.archive/README.md
+101因子/101因子分析平台/scripts/test_datasource.py
+code_converter/utils/qmt_api_scraper.py
+
+# ==================== AI助手实验性功能（本地开发，不提交） ====================
+# AI助手核心代码
+easy_xt/ai_assistant.py
+start_ai_assistant.py
+test_ai_query.py
+get_maotai_daily.py
+
+# AI助手相关文档
+docs/NLP_CLARIFICATION.md
+docs/TUSHARE_SKILLS_EXPLAINED.md
+docs/FUTURE_PLAN_AI_Assistant.md
+
+# AI助手测试和图表生成脚本
+test_tushare_skills.py
+generate_charts.py
+generate_api_coverage_chart.py
+
+# AI助手生成的内容（公众号推文等）
+公众号推文_*.md
+公众号推文-*.md
+公众号文章*.md
+公众号发布指南.md
+docs/公众号推文*.md
+docs/公众号文章*.md
+docs/王者quant 公众号文章/
+更新说明_*.md
+交付清单.md
+🎉项目完成总结.md
+
+# AI助手生成的图表
+tushare_skills_charts/
+
+# AI助手生成的数据文件
+maotai_daily_*.csv
+
+# AI助手临时文件
+一键复制推文.py
+
+# AI助手模块和脚本
+easy_xt/cli/
+easy_xt/intelligent_query.py
+strategies/ai_strategy_helper.py
+
+demo_ai_integration.py
+core/PATH_MANAGER_GUIDE.md
+docs/101因子平台架构设计-YAML配置版.md
+docs/101因子集成方案.md
+docs/101因子平台实施进度.md
+docs/测试报告-端到端测试.md
+PROJECT_ISSUES.md
+新建.md
+101因子/101因子分析平台/demo_new_features.py
+101因子/101因子分析平台/generate_ic_charts.py
+factor_analysis_report.txt
+101因子/101因子分析平台/OPTIMIZATION_SUMMARY.md
+101因子/101因子分析平台/run_gui.py.original
+start_qmt_gui.bat
+code_converter/ptrade_strategy.py
+code_converter/ptrade代码/
+close_and_restart.bat
+tools/qmt_bond_list.txt
+101因子/101因子分析平台/src/cb_backtest/cb_data_manager.py.tmp.23928.1777516038102
+101因子/101因子分析平台/src/cb_backtest/cb_backtest_engine.py.tmp.23928.1777516463913
+tools/duckdb_to_qlib.py
+优化分析报告.md
+down_queue_*
+PYPlugins/TdxQuant_量化平台文档.md
+minimqt关闭.txt
+userswukunappdatalocaltempeasyxt_test/
+
+# EasyXT 文档生成工作区（gen_*.py + 截图 + RAR 不提交）
+docs/manual/
+
+# AI助手生成的内容（公众号推文等，不提交到 GitHub）
+docs/王者quant策略工坊/
+
+# 知乎运营内容（不提交到 GitHub）
+知乎/
+
+# Node.js（puppeteer 抓取工具）
+node_modules/
+package-lock.json
+tools/fetch_tdxquant_docs.py
+strategies/双均线金叉回测_平安银行.py
+
+# 文档截图（临时文件，不提交）
+screenshots/
+
+# 策略运行时状态文件
+*_log_state.json
+
+# 诊断和调试日志（txt格式）
+*_diag.txt
+*_diagnostic*.txt
+bridge_*.txt
+unit_tests/data_manager/test_data_loss_protection.py
+docs/DATA_NODE_SERVICE.md
+
+# code_converter 子模块中的个人代码目录（不提交）
+code_converter/大QMT代码/
+code_converter/**/大QMT代码/
+docs/BIG_QMT_REALTIME_BRIDGE.md
+docs/公众号文章/Mac使用EasyXT访问Windows数据源-UU远程端口映射方案.md
+
+# 实时行情桥接（VIP功能，不提交到GitHub）
+easy_xt/realtime_bridge/

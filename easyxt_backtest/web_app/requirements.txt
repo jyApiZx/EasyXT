@@ -1,0 +1,2 @@
+# Compatibility installer. Dependency versions are defined in ../../pyproject.toml.
+-e ../..[backtest,gui]

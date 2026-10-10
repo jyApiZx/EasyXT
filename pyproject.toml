@@ -1,0 +1,82 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "easyxt"
+version = "1.0.1"
+description = "EasyXT - 基于迅投QMT的量化交易扩展工具包"
+readme = "README.md"
+authors = [{ name = "王者quant", email = "2174721315@qq.com" }]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Microsoft :: Windows",
+  "Topic :: Office/Business :: Financial :: Investment"
+]
+dependencies = [
+  "pandas>=1.3.0",
+  "numpy>=1.21.0",
+  "requests>=2.25.0",
+  "psutil>=5.9.0",
+  "pydantic>=1.10.0",
+]
+
+[project.optional-dependencies]
+data = ["duckdb>=0.9.0", "pyarrow>=10.0.0", "tushare>=1.2.60", "baostock>=0.9.3,<0.10", "qstock>=1.0.0", "akshare>=1.9.0", "python-dotenv>=1.0.0"]
+backtest = ["backtrader>=1.9.78", "PyYAML>=6.0", "matplotlib>=3.5.0", "plotly>=5.18.0", "duckdb>=0.9.0"]
+gui = ["PyQt5>=5.15.0", "pyqtgraph>=0.12.0", "mplfinance>=0.12.0", "pillow>=8.0.0", "streamlit>=1.30.0", "PyYAML>=6.0"]
+automation = ["pywinauto>=0.6.8; platform_system == 'Windows'", "pyautogui>=0.9.54"]
+dev = ["pytest>=7.4.0", "pytest-cov>=4.1.0", "black>=23.0.0", "flake8>=6.0.0"]
+realtime = [
+  "fastapi>=0.103.0",
+  "uvicorn>=0.23.0",
+  "pytdx>=1.72",
+  "aiohttp>=3.8.0",
+  "aiohttp-cors>=0.7.0",
+  "websockets>=10.0",
+  "asyncio-mqtt>=0.11.0",
+  "pyyaml>=6.0",
+  "colorlog>=6.6.0"
+]
+baostock = [
+  "baostock>=0.9.3,<0.10",
+]
+ftshare = [
+  "ftshare @ git+https://github.com/FTShare-Lab/FTShare-python-sdk.git",
+]
+xueqiu = [
+  "aiohttp>=3.8.0",
+  "asyncio-mqtt>=0.11.0",
+  "pandas>=2.0.0",
+  "numpy>=1.24.0",
+  "pillow>=10.0.0",
+  "beautifulsoup4>=4.12.0",
+  "lxml>=4.9.0",
+  "selenium>=4.15.0",
+  "cryptography>=41.0.0",
+  "PyYAML>=6.0",
+  "python-dotenv>=1.0.0",
+  "python-dateutil>=2.8.0",
+  "pywinauto>=0.6.8; platform_system == 'Windows'",
+  "pyautogui>=0.9.54",
+]
+
+[project.urls]
+Homepage = "https://github.com/quant-king299/EasyXT"
+Source = "https://github.com/quant-king299/EasyXT"
+
+[project.scripts]
+# 如需 CLI，可在相应模块内实现 main()
+# easyxt-cli = "easyxt.cli:main"
+
+[tool.flit.module]
+name = "easy_xt"
+
+[tool.pytest.ini_options]
+testpaths = ["unit_tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]

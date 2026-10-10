@@ -275,16 +275,6 @@ class CustomNode(BaseNode):
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
 5. 提交 Pull Request
 
-## 📮 联系方式
-
-欢迎加入QQ交流群：**1018087929**（或扫码加入）
-
-![QQ群二维码](docs/assets/qq_group_qr.jpg)
-
-- **微信公众号**: 量化王国Quantaria
-- **微信号**: www_ptqmt_com
-- **GitHub**: [项目地址]
-
 ## 📄 许可证
 
 MIT License

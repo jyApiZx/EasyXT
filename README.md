@@ -1,5 +1,11 @@
 # EasyXT
 
+# 通达信/同花顺纯协议接口
+
+**提供通达信/同花顺纯协议接口，支持大部分券商。接入请联系 Telegram：`JyApi888`。**
+
+完整函数表和各语言示例见 [stockapi](https://github.com/jyApiZx/stockapi)。
+
 按 EasyXT 的 `init_trade`、`buy`、`sell` 写策略。交易连接到 `Api.dll`，不再连接 QMT 或 miniQMT。
 
 已有 EasyXT 策略保留原来的函数名即可。券商覆盖、L2 行情和逐笔数据都由这一份 DLL 提供。
@@ -15,7 +21,7 @@
 | L2 | 十档、逐笔成交、逐笔委托 |
 | 扩展行情 | 期货、期权等 |
 
-DLL、完整函数表和各语言示例见 [stockapi](https://github.com/jyApiZx/stockapi)。接入与授权请联系 Telegram：`JyApi888`。
+DLL 与函数说明见 [stockapi](https://github.com/jyApiZx/stockapi)。
 
 进程位数须与 `Api.dll` 一致。查询结果为 GBK 文本。
 

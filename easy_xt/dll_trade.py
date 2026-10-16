@@ -32,7 +32,7 @@ def parse_tsv(text):
 
 class DllTrade(object):
     def __init__(self):
-        self.dll = WinDLL(os.environ.get("STOCKAPI_DLL", "Api.dll"))
+        self.dll = WinDLL(os.environ.get("THSAPI_DLL", "thsapi.dll"))
         self.client_id = -1
         self.account = "YOUR_ACCOUNT"
         self._bind()

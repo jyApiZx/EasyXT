@@ -28,8 +28,7 @@ class EasyXT:
     def trade(self):
         """延迟加载交易API，只在需要时创建"""
         if self._trade is None:
-            from .dll_trade import DllTrade
-            self._trade = DllTrade()
+            self._trade = get_shared_trade_api()
         return self._trade
     
     def init_data(self) -> bool:
@@ -46,22 +45,25 @@ class EasyXT:
             logger.info("数据服务初始化失败")
         return self._data_connected
     
-    def init_trade(self, userdata_path: str = "YOUR_BROKER_IP", session_id: Optional[str] = None, account: str = "YOUR_ACCOUNT", password: str = "YOUR_PASSWORD", port: int = 0) -> bool:
-        """
-        初始化交易服务。交易走 Api.dll，不再连接 QMT。
-
-        Args:
-            userdata_path: 券商交易地址，例如 YOUR_BROKER_IP
-            session_id: 保留参数，不使用
-            account: 授权账号
-            password: 授权密码
-            port: 交易端口
-        """
-        self._trade_connected = self.trade.connect(userdata_path, port, account, password)
+    def init_trade(self, userdata_path: str, session_id: Optional[str] = None) -> bool:
+        """初始化交易服务，仍连接 QMT。"""
+        self._trade = get_shared_trade_api()
+        self._trade_connected = self.trade.connect(userdata_path, session_id)
         if self._trade_connected:
             logger.info("交易服务初始化成功")
         else:
             logger.info("交易服务初始化失败")
+        return self._trade_connected
+
+    def init_trade_thsapi(self, ip: str, port: int = 8002, account: str = "YOUR_ACCOUNT", password: str = "YOUR_PASSWORD") -> bool:
+        """用 thsapi.dll 直接连券商。原来的 init_trade 仍走 QMT。"""
+        from .dll_trade import DllTrade
+        self._trade = DllTrade()
+        self._trade_connected = self.trade.connect(ip, port, account, password)
+        if self._trade_connected:
+            logger.info("thsapi 交易已连接")
+        else:
+            logger.info("thsapi 交易连接失败")
         return self._trade_connected
     
     def add_account(self, account_id: str, account_type: str = 'STOCK') -> bool:

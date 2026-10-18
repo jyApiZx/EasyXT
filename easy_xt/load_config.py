@@ -1,0 +1,93 @@
+import logging
+
+logger = logging.getLogger(__name__)
+"""
+配置加载模块
+提供从统一配置文件加载配置的功能
+"""
+
+import json
+import os
+from typing import Dict, Any, Optional
+from pathlib import Path
+
+def load_unified_config() -> Optional[Dict[str, Any]]:
+    """
+    加载统一配置文件
+
+    Returns:
+        Optional[Dict[str, Any]]: 配置字典，如果加载失败则返回None
+    """
+    # 定义可能的配置文件路径（不依赖应用层）
+    possible_paths = []
+
+    # 1. 优先使用环境变量指定的配置路径
+    env_config_path = os.getenv('EASYXT_CONFIG_PATH')
+    if env_config_path:
+        possible_paths.append(Path(env_config_path))
+
+    # 2. 项目根目录下的config目录
+    possible_paths.append(Path(__file__).parent.parent / "config" / "unified_config.json")
+
+    # 3. 当前工作目录下的config目录
+    possible_paths.append(Path.cwd() / "config" / "unified_config.json")
+
+    # 4. 用户主目录下的 .easyxt 配置
+    home_config = Path.home() / ".easyxt" / "config.json"
+    if home_config.exists():
+        possible_paths.append(home_config)
+    
+    # 尝试加载配置文件
+    for config_path in possible_paths:
+        if config_path.exists():
+            try:
+                with open(config_path, 'r', encoding='utf-8') as f:
+                    config_data = json.load(f)
+                logger.info(f"[OK] Successfully loaded unified config: {config_path}")
+                return config_data
+            except Exception as e:
+                logger.warning(f"[WARNING] Config file loading failed {config_path}: {e}")
+
+    logger.info("[INFO] No unified config file found, using defaults")
+    return None
+
+def update_config_with_unified_settings(config_instance) -> bool:
+    """
+    使用统一配置文件更新配置实例
+    
+    Args:
+        config_instance: EasyXT配置实例
+        
+    Returns:
+        bool: 是否成功更新配置
+    """
+    # 加载统一配置
+    unified_config = load_unified_config()
+    if not unified_config:
+        return False
+    
+    # 更新账户配置
+    account_config = unified_config.get('settings', {}).get('account', {})
+    if account_config:
+        # 更新账户ID
+        account_id = account_config.get('account_id')
+        if account_id:
+            config_instance.set('settings.account.account_id', account_id)
+        
+        # 更新QMT路径
+        qmt_path = account_config.get('qmt_path')
+        if qmt_path:
+            # 检查路径是否已经包含userdata_mini子目录
+            if 'userdata_mini' in qmt_path or 'userdata' in qmt_path:
+                # 如果已经包含userdata路径，直接设置
+                if os.path.exists(qmt_path):
+                    config_instance.settings['trade']['userdata_path'] = qmt_path
+                    config_instance.settings['qmt']['detected_path'] = os.path.dirname(qmt_path)
+                else:
+                    logger.warning(f"[WARN] 配置文件中的QMT路径不存在: {qmt_path}，将尝试自动检测")
+            else:
+                # 否则使用原始逻辑设置QMT路径
+                if not config_instance.set_qmt_path(qmt_path):
+                    logger.warning(f"[WARN] 配置文件中的QMT路径无效: {qmt_path}，将尝试自动检测")
+    
+    return True

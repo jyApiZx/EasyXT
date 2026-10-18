@@ -1,0 +1,93 @@
+{
+  "version": "3.0",
+  "version_comment": "配置版本号，用于区分不同版本的统一配置",
+  "description": "基础统一配置文件 - 移除了雪球跟单相关配置",
+  "description_comment": "配置文件整体说明，便于理解用途",
+  "last_updated": "2025-10-02",
+  "last_updated_comment": "最后一次更新配置的日期（YYYY-MM-DD）",
+  "config_source": "unified_config.json",
+  "config_source_comment": "当前配置来源文件名，用于标识配置加载来源",
+  "system": {
+    "system_comment": "系统级通用设置（配置管理、QMT连接等）",
+    "config_manager": {
+      "primary_config": "unified_config.json",
+      "primary_config_comment": "主配置文件名，优先使用的配置",
+      "fallback_configs": [],
+      "fallback_configs_comment": "备用配置文件列表，当主配置缺项时可从这些文件回退读取"
+    },
+    "qmt": {
+      "qmt_comment": "QMT交易端相关设置",
+      "session_id": "mini_qmt",
+      "session_id_comment": "会话ID，用于标识本次运行的交易会话",
+      "api_type": "easyxt",
+      "api_type_comment": "交易API类型（如 easyxt），需与实际接入的API一致",
+      "auto_retry": true,
+      "auto_retry_comment": "发生连接或请求失败时是否自动重试",
+      "retry_delay": 5,
+      "retry_delay_comment": "自动重试的间隔秒数",
+      "max_retries": 3,
+      "max_retries_comment": "最大自动重试次数"
+    }
+  },
+  "settings": {
+    "settings_comment": "运行时的通用设置（账户、风控、监控、日志、交易参数等）",
+    "account": {
+      "account_comment": "交易账户配置（qmt_path / account_id 请到项目根目录 .env 文件中设置）",
+      "auto_detect_qmt": true,
+      "auto_detect_qmt_comment": "是否自动检测QMT路径与状态"
+    },
+    "risk": {
+      "risk_comment": "风控相关参数设置",
+      "max_position_ratio": 0.1,
+      "max_position_ratio_comment": "单票最大持仓比例（相对于总资产）",
+      "stop_loss_ratio": 0.05,
+      "stop_loss_ratio_comment": "单票止损比例（亏损达到比例触发止损）",
+      "max_total_exposure": 0.8,
+      "max_total_exposure_comment": "整体最大敞口比例（总仓位上限）",
+      "blacklist": [
+        "ST*",
+        "*ST"
+      ],
+      "blacklist_comment": "黑名单规则（支持通配符），匹配到的标的不参与交易",
+      "emergency_stop": false,
+      "emergency_stop_comment": "紧急止停开关（触发后暂停所有交易）"
+    },
+    "monitoring": {
+      "monitoring_comment": "运行监控与健康检查参数",
+      "check_interval": 30,
+      "check_interval_comment": "监控检查的时间间隔（秒）",
+      "retry_times": 3,
+      "retry_times_comment": "监控失败时的重试次数",
+      "timeout": 10,
+      "timeout_comment": "监控与请求的超时时间（秒）",
+      "max_delay": 3,
+      "max_delay_comment": "允许的最大延迟（秒），用于行情等超时判断",
+      "health_check_interval": 300,
+      "health_check_interval_comment": "健康检查周期（秒），用于系统自检"
+    },
+    "logging": {
+      "logging_comment": "日志记录设置",
+      "level": "INFO",
+      "level_comment": "日志级别（DEBUG/INFO/WARN/ERROR）",
+      "file": "logs/application.log",
+      "file_comment": "日志文件路径",
+      "max_size": "10MB",
+      "max_size_comment": "单个日志文件的最大大小（达到后滚动）",
+      "backup_count": 5,
+      "backup_count_comment": "日志文件最大备份数量",
+      "enable_console": true,
+      "enable_console_comment": "是否在控制台输出日志"
+    },
+    "trading": {
+      "trading_comment": "交易参数设置",
+      "trade_mode": "paper_trading",
+      "trade_mode_comment": "交易模式（paper_trading为仿真；real为实盘）",
+      "auto_confirm": true,
+      "auto_confirm_comment": "自动确认下单与执行（谨慎开启）",
+      "price_tolerance": 0.02,
+      "price_tolerance_comment": "价格容忍度（用于偏差判断）",
+      "min_trade_amount": 100,
+      "min_trade_amount_comment": "最小交易数量（手/股）"
+    }
+  }
+}

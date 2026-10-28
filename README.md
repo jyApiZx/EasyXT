@@ -12,7 +12,7 @@
 
 客户端和下单通道慢，也容易漏单、错单。要用同花顺交易接口直接连券商，用 `init_trade_thsapi`，加载 `thsapi.dll`。不用开着同花顺或通达信客户端。下单、撤单和查询走 DLL。
 
-交易包：[64 位](https://github.com/jyApiZx/stockapi/releases/download/v1.0.6.1/thsapi_1.0.6.1_x64.zip)、[32 位](https://github.com/jyApiZx/stockapi/releases/download/v1.0.6.1/thsapi_1.0.6.1_x32.zip)。调用说明见 [stockapi](https://github.com/jyApiZx/stockapi)。
+交易包：[64 位](https://github.com/jyApiZx/stockapi/releases/download/v1.0.6.2/thsapi_1.0.6.2_x64.zip)、[32 位](https://github.com/jyApiZx/stockapi/releases/download/v1.0.6.2/thsapi_1.0.6.2_x32.zip)。调用说明见 [stockapi](https://github.com/jyApiZx/stockapi)。
 
 ## 同花顺交易接口
 
